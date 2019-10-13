@@ -1,0 +1,32 @@
+import hashlib
+import argparse
+
+
+def fngenhash():
+    filename = input("Enter filename:  ")
+    file = open(filename, "r", encoding="ansi")
+    content = file.read()
+    result = hashlib.md5(content.encode())
+    #print(result.hexdigest())
+    hashfilename = filename+".hash"
+    hashfile = open(hashfilename, "w")
+    hashfile.write(result.hexdigest())
+    file.close()
+    hashfile.close()
+def fncomphash():
+    filename=input("Enter filename:  ")
+    file=open(filename, "r", encoding="ansi")
+    content=file.read()
+    result = hashlib.md5(content.encode())
+    hashfilename = filename+".hash"
+    hashfile = open(hashfilename,"r",encoding="ansi")
+    hashcontent = hashfile.read()
+
+    """a=""
+    a=input("Enter Hash Value:  ")"""
+    if result.hexdigest() == hashcontent:
+        print("Comp Success")
+    else:
+        print("Comp fail")
+fngenhash()
+fncomphash()
